@@ -4,6 +4,7 @@ import numpy as np
 import mediapipe as mp
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 
+webrtc_streamer(key="sample")
 # Streamlit page configuration
 st.set_page_config(page_title="Virtual Keyboard", layout="wide")
 st.title("Interactive Virtual Keyboard")
