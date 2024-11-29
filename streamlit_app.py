@@ -23,8 +23,8 @@ keys = [["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
         ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";"],
         ["Z", "X", "C", "V", "B", "N", "M", ",", ".", "/"]]
 
-listImg = os.listdir('model/street')
-imgList = [cv2.imread(f'model/street/{imgPath}') for imgPath in listImg]
+listImg = os.listdir('street')
+imgList = [cv2.imread(f'street/{imgPath}') for imgPath in listImg]
 indexImg = 0
 
 # Shared state for output text
