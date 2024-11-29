@@ -1,18 +1,14 @@
+# Use Streamlit's webcam widget instead of OpenCV
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
 
-# Define a video transformer class to process the video frames
-class VideoProcessor(VideoTransformerBase):
-    def transform(self, frame):
-        # Perform frame processing here if needed (e.g., object detection, etc.)
-        return frame
+st.set_page_config(page_title="Virtual Keyboard", layout="wide")
+st.title("Interactive Virtual Keyboard")
 
-# Add a title to the app
-st.title("WebRTC Streamlit Example")
+# Streamlit webcam input
+frame = st.camera_input("Take a picture")
 
-# Use webrtc_streamer with the custom video processor
-webrtc_streamer(
-    key="sample",
-    video_processor_factory=VideoProcessor,  # Assign the video processor
-    media_stream_constraints={"video": True, "audio": False},  # Enable video, disable audio
-)
+if frame:
+    # Convert the Streamlit image to an OpenCV format
+    img = frame.to_image()
+    img = np.array(img)
+    img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR) 
